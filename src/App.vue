@@ -9,16 +9,17 @@ export default {
   data(){
     return{
       store,
-      apiUrl:"https://api.themoviedb.org/3/search/movie",
-      apiKey:"&api_key=9e8a9ba25d0346e2cf97938b16ad80eb"
+      apiUrlMovie:"https://api.themoviedb.org/3/search/movie",
+      apiKey:"9e8a9ba25d0346e2cf97938b16ad80eb",
+      apiUrlTv:"https://api.themoviedb.org/3/search/tv"
 
 
     }
   },
 
  methods: {
-    fetchFilms(searched){
-      axios.get(`${this.apiUrl}?query=${searched}${this.apiKey}`)
+    fetchCards(searched){
+      axios.get(`${this.apiUrlMovie}?query=${searched}&api_key=${this.apiKey}`)
       .then((res)=>{
         const movies = res.data.results.map((movie) => {
           return{
@@ -29,6 +30,18 @@ export default {
           }
         })
         store.movies = movies;
+      }),
+      axios.get(`${this.apiUrlTv}?query=${searched}&api_key=${this.apiKey}`)
+      .then((res)=>{
+        const tvShows = res.data.results.map((show) => {
+          return{
+            title: show.name,
+            originalTitle: show.original_name,
+            language: show.original_language,
+            ratings: show.vote_average
+          }
+        })
+        store.tvShows = tvShows;
       })
 
     }
@@ -39,7 +52,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader @movie-search="fetchFilms"/>
+    <AppHeader @movie-search="fetchCards"/>
     <AppMain />
   </div>
 
