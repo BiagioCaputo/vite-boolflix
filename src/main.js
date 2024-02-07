@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+//added Bootstrap 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.vue'
 

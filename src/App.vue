@@ -1,4 +1,5 @@
 <script setup>
+import axios from 'axios';
 
 </script>
 
@@ -6,5 +7,6 @@
 
 </template>
 
-<style scoped>
+<style lang="scss">
+@use './assets/scss/style.scss'
 </style>
