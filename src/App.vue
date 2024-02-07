@@ -8,14 +8,18 @@ export default {
   components: { AppHeader, AppMain },
   data: () => ({ store }),
 
- methods: {}
+ methods: {
+  searchTerms(movie){
+    console.log("ciao", movie)
+  }
+ }
 
 }
 </script>
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader @movie-search="searchTerms"/>
     <AppMain />
   </div>
 
