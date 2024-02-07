@@ -6,12 +6,32 @@ import AppMain from './components/AppMain.vue';
 export default {
   name: 'Boolflix',
   components: { AppHeader, AppMain },
-  data: () => ({ store }),
+  data(){
+    return{
+      store,
+      apiUrl:"https://api.themoviedb.org/3/search/movie",
+      apiKey:"&api_key=9e8a9ba25d0346e2cf97938b16ad80eb"
+
+
+    }
+  },
 
  methods: {
-  searchTerms(movie){
-    console.log("ciao", movie)
-  }
+    fetchFilms(searched){
+      axios.get(`${this.apiUrl}?query=${searched}${this.apiKey}`)
+      .then((res)=>{
+        const movies = res.data.results.map((movie) => {
+          return{
+            title: movie.title,
+            originalTitle: movie.original_title,
+            language: movie.original_language,
+            ratings: movie.vote_average
+          }
+        })
+        store.movies = movies;
+      })
+
+    }
  }
 
 }
@@ -19,7 +39,7 @@ export default {
 
 <template>
   <div>
-    <AppHeader @movie-search="searchTerms"/>
+    <AppHeader @movie-search="fetchFilms"/>
     <AppMain />
   </div>
 

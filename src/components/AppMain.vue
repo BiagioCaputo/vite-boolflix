@@ -1,7 +1,13 @@
 <script>
+import {store} from './../data/store'
 export default {
   name: 'AppMain',
   components: {},
+  data(){
+    return{
+        store,
+    }
+  }
 }
 
 
@@ -9,6 +15,7 @@ export default {
 
 <template>
     <main>
+        
          
     </main>
 
