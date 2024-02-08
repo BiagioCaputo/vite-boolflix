@@ -1,8 +1,9 @@
 <script>
 import {store} from './../data/store'
+import ProductionCard from './ProductionCard.vue';
 export default {
     name: 'AppMain',
-    components: {},
+    components: {ProductionCard},
     data(){
         return{
             store,
@@ -18,30 +19,14 @@ export default {
         <div id="movie-section" class="row-container py-3 mb-5">
             <h1>Movies</h1>
             <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4 ">
-                <div class="col" v-for="movie in store.movies">
-                    <ul>
-                        <li>{{movie.title}}</li>
-                        <li>{{movie.originalTitle}}</li>
-                        <li>{{movie.ratings}}</li>
-                        <li>{{movie.language}}</li>
-                    </ul>
-                    
-                </div>
+                <ProductionCard v-for="movie in store.movies" :production="movie" />    
             </div>
         </div>
 
         <div id="tv-section" class="row-container py-3">
             <h1>Tv series</h1>
             <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4 ">
-                <div class="col" v-for="show in store.tvShows">
-                    <ul>
-                        <li>{{show.title}}</li>
-                        <li>{{show.originalTitle}}</li>
-                        <li>{{show.ratings}}</li>
-                        <li>{{show.language}}</li>
-                    </ul>
-                    
-                </div>
+                <ProductionCard v-for="show in store.tvShows" :production="show" />
             </div>
         </div>
          

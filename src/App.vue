@@ -11,13 +11,14 @@ export default {
       store,
       apiUrlMovie:"https://api.themoviedb.org/3/search/movie",
       apiKey:"9e8a9ba25d0346e2cf97938b16ad80eb",
-      apiUrlTv:"https://api.themoviedb.org/3/search/tv"
+      apiUrlTv:"https://api.themoviedb.org/3/search/tv",
 
 
     }
   },
 
  methods: {
+
     fetchCards(searched){
       axios.get(`${this.apiUrlMovie}?query=${searched}&api_key=${this.apiKey}`)
       .then((res)=>{
