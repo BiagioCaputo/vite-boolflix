@@ -12,6 +12,16 @@ export default {
     flagSrc() {
         const url = new URL(`../assets/img/${this.production.language}.png`, import.meta.url);
         return url.href;
+    },
+
+    hasImage(){
+        return this.production.img;
+    },
+
+    getImage(){
+        const baseUrl = "https://image.tmdb.org/t/p/w500";
+        return  baseUrl + this.production.img;
+
     }
 
   }
@@ -25,9 +35,13 @@ export default {
             <li>{{production.title}}</li>
             <li>{{production.originalTitle}}</li>
             <li>{{production.ratings}}</li>
-            <li>
+            <li class="mb-3">
                 <img v-if="hasFlag" :src="flagSrc" :alt="production.language">
                 <span v-else>{{ production.language }}</span>
+            </li>
+            <li>
+                <img v-if="hasImage" :src="getImage" :alt="production.title">
+                <span v-else>No image</span>
             </li>
         </ul>
     </div>
@@ -37,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 img{
-    max-width: 50px;
+    max-width: 100px;
 }
 
 

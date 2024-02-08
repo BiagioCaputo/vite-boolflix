@@ -18,7 +18,7 @@ export default {
     <main>
         <div id="movie-section" class="row-container py-3 mb-5">
             <h1>Movies</h1>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4 ">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4">
                 <ProductionCard v-for="movie in store.movies" :production="movie" />    
             </div>
         </div>
