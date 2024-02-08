@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-    <main>
+    <main class="p-5">
         <div id="movie-section" class="row-container py-3 mb-5">
             <h1>Movies</h1>
             <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4">
@@ -35,6 +35,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+main{
+    background-color: grey;
+}
 
 
 </style>

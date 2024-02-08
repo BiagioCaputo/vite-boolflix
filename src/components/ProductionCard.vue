@@ -19,20 +19,19 @@ export default {
     },
 
     getImage(){
-        const baseUrl = "https://image.tmdb.org/t/p/w500";
+        const baseUrl = "https://image.tmdb.org/t/p/w342";
         return  baseUrl + this.production.img;
 
     },
 
-    getStars(){
-        const stars="";
-        const star=`<FontAwesomeIcon icon="fas fa-star" />`;
-        const rating = parseInt(this.production.numbers / 2);
-        for(let i=0; i < rating; i++){
-            stars= stars + star
-        }
+    getNumberStars(){
+        const stars = parseInt(this.production.numbers / 2);
         return stars
 
+    },
+
+    getStars(){
+        return Array.from({ length: this.getNumberStars });
     }
 
    
@@ -44,19 +43,33 @@ export default {
 
 <template>
     <div class="col">
-        <ul>
-            <li>Title: {{production.title}}</li>
-            <li>Original title:{{production.originalTitle}}</li>
-            <li>Rating:{{ getStars }}</li>
-            <li class="mb-3">
-                <img v-if="hasFlag" :src="flagSrc" :alt="production.language">
-                <span v-else>Language:{{ production.language }}</span>
-            </li>
-            <li>
+        <div class="card-production">
+            <div class="cover-card">
                 <img v-if="hasImage" :src="getImage" :alt="production.title">
                 <span v-else>No image</span>
-            </li>
-        </ul>
+            </div>
+            <div class="content-card">
+                <div class="title-box">
+                    <div><b>Title:</b> {{production.title}}</div>
+                    <div v-if="production.originalTitle != production.title"><b>Original title:</b>{{production.originalTitle}}</div>
+                </div>
+                <div class="language-box mb-3">
+                    <span class="me-2"><b>Language:</b></span>
+                    <img v-if="hasFlag" :src="flagSrc" :alt="production.language">
+                    <span v-else>{{ production.language }}</span>
+                </div>
+                <div class="ratings-box d-flex gap-2">
+                    <div>
+                        <FontAwesomeIcon icon="fas fa-star" />
+                    </div>
+                </div>
+                <div class="description-box">
+                    <span><b>Description: </b></span>
+                    <p>{{production.description}}</p>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
@@ -66,8 +79,14 @@ export default {
 ul{
     list-style-type: none;
 }
-img{
-    max-width: 100px;
+.language-box img{
+    max-width: 30px;
+}
+
+.card-production{
+    border:1px solid white;
+    height: 100%;
+    color:white;
 }
 
 

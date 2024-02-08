@@ -28,7 +28,8 @@ export default {
             originalTitle: movie.original_title,
             language: movie.original_language,
             ratings: movie.vote_average,
-            img: movie.backdrop_path
+            img: movie.backdrop_path,
+            description: movie.overview
           }
         })
         store.movies = movies;
@@ -41,7 +42,8 @@ export default {
             originalTitle: show.original_name,
             language: show.original_language,
             ratings: show.vote_average,
-            img: show.poster_path
+            img: show.poster_path,
+            description: show.overview
           }
         })
         store.tvShows = tvShows;
