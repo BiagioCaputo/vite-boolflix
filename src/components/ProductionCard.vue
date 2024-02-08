@@ -22,7 +22,20 @@ export default {
         const baseUrl = "https://image.tmdb.org/t/p/w500";
         return  baseUrl + this.production.img;
 
+    },
+
+    getStars(){
+        const stars="";
+        const star=`<FontAwesomeIcon icon="fas fa-star" />`;
+        const rating = parseInt(this.production.numbers / 2);
+        for(let i=0; i < rating; i++){
+            stars= stars + star
+        }
+        return stars
+
     }
+
+   
 
   }
 }
@@ -32,12 +45,12 @@ export default {
 <template>
     <div class="col">
         <ul>
-            <li>{{production.title}}</li>
-            <li>{{production.originalTitle}}</li>
-            <li>{{production.ratings}}</li>
+            <li>Title: {{production.title}}</li>
+            <li>Original title:{{production.originalTitle}}</li>
+            <li>Rating:{{ getStars }}</li>
             <li class="mb-3">
                 <img v-if="hasFlag" :src="flagSrc" :alt="production.language">
-                <span v-else>{{ production.language }}</span>
+                <span v-else>Language:{{ production.language }}</span>
             </li>
             <li>
                 <img v-if="hasImage" :src="getImage" :alt="production.title">
@@ -50,6 +63,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+ul{
+    list-style-type: none;
+}
 img{
     max-width: 100px;
 }
