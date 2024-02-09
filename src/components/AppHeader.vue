@@ -11,7 +11,7 @@ export default {
 
 <template>
     <header class="d-flex justify-content-between align-items-center px-4">
-        <h1>Boolflix</h1>
+        <h1 class="text-danger">Boolflix</h1>
         <BaseSearch @submit-search="$emit('movie-search', $event)"/>
 
     </header>

@@ -40,7 +40,7 @@ export default {
         <div class="card-production">
             <div class="cover-card">
                 <img v-if="hasImage" :src="getImage" :alt="production.title">
-                <span v-else>No image</span>
+                <img v-else src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png">
             </div>
             <div class="content-card p-2">
                 <div class="title-box">
@@ -72,7 +72,8 @@ export default {
 
 <style lang="scss" scoped>
 .col{
-    
+    height: 520px;
+    flex-basis: 368px;
 }
 .card-production{
     border:1px solid white;
@@ -83,8 +84,8 @@ export default {
 
 .cover-card{
     border-radius: 10px;
-    opacity: 1;
     transition: all 0.5s ease;
+    height: 100%;
 
 
     &:hover{
@@ -92,7 +93,7 @@ export default {
     }
 
     img{
-        max-width: 100%;
+        width: 100%;
         height: 100%;
     }
 }
