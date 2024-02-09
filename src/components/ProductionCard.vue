@@ -73,20 +73,21 @@ export default {
 <style lang="scss" scoped>
 .col{
     height: 520px;
-    flex-basis: 368px;
 }
 .card-production{
     border:1px solid white;
     height: 100%;
     color:white;
     position: relative;
+    border-radius: 10px;
 }
 
 .cover-card{
     border-radius: 10px;
     transition: all 0.5s ease;
     height: 100%;
-
+    overflow-y: hidden;
+    
 
     &:hover{
     display: none;

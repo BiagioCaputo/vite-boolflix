@@ -28,7 +28,7 @@ export default {
             originalTitle: movie.original_title,
             language: movie.original_language,
             ratings: movie.vote_average,
-            img: movie.backdrop_path,
+            img: movie.poster_path,
             description: movie.overview
           }
         })
