@@ -73,6 +73,7 @@ export default {
 <style lang="scss" scoped>
 .col{
     height: 520px;
+    width:342px;
 }
 .card-production{
     border:1px solid white;

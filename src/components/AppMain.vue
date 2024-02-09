@@ -18,13 +18,13 @@ export default {
     <main class="p-5">
         <h1>Movies</h1>
         <div id="movie-section" class="row-container py-3 mb-5 ">
-            <div class="row gap-3 justify-content-around row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6 ">
+            <div class="row gap-3 row-cols-2 row-cols-md-3 row-cols-l-4 row-cols-xl-5 row-cols-xxl-6 ">
                 <ProductionCard v-for="movie in store.movies" :production="movie" />    
             </div>
         </div>
         <h1>Tv series</h1>
         <div id="tv-section" class="row-container py-3  ">
-            <div class="row gap-3 justify-content-around row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5">
+            <div class="row gap-3 row-cols-2 row-cols-md-3 row-cols-l-4 row-cols-xl-5 row-cols-xxl-6">
                 <ProductionCard v-for="show in store.tvShows" :production="show" />
             </div>
         </div>
