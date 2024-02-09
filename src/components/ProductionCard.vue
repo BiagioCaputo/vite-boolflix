@@ -24,15 +24,9 @@ export default {
 
     },
 
-    getNumberStars(){
-        const stars = parseInt(this.production.numbers / 2);
-        return stars
-
+    rating(){
+        return Math.ceil(this.production.ratings / 2);
     },
-
-    getStars(){
-        return Array.from({ length: this.getNumberStars });
-    }
 
    
 
@@ -48,10 +42,10 @@ export default {
                 <img v-if="hasImage" :src="getImage" :alt="production.title">
                 <span v-else>No image</span>
             </div>
-            <div class="content-card">
+            <div class="content-card p-2">
                 <div class="title-box">
-                    <div><b>Title:</b> {{production.title}}</div>
-                    <div v-if="production.originalTitle != production.title"><b>Original title:</b>{{production.originalTitle}}</div>
+                    <span><b>Title:</b> {{production.title}}</span>
+                    <div v-if="production.originalTitle != production.title"><span><b>Original title:</b></span>{{production.originalTitle}}</div>
                 </div>
                 <div class="language-box mb-3">
                     <span class="me-2"><b>Language:</b></span>
@@ -59,8 +53,9 @@ export default {
                     <span v-else>{{ production.language }}</span>
                 </div>
                 <div class="ratings-box d-flex gap-2">
+                    <span><b>Ratings:</b></span>
                     <div>
-                        <FontAwesomeIcon icon="fas fa-star" />
+                        <FontAwesomeIcon v-for="n in 5"  :key="n" :icon="[n <= rating ? 'fas' : 'far', 'star']"/>
                     </div>
                 </div>
                 <div class="description-box">
@@ -76,18 +71,49 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-ul{
-    list-style-type: none;
+.col{
+    
 }
-.language-box img{
-    max-width: 30px;
-}
-
 .card-production{
     border:1px solid white;
     height: 100%;
     color:white;
+    position: relative;
 }
 
+.cover-card{
+    border-radius: 10px;
+    opacity: 1;
+    transition: all 0.5s ease;
+
+
+    &:hover{
+    display: none;
+    }
+
+    img{
+        max-width: 100%;
+        height: 100%;
+    }
+}
+
+.content-card{
+    transition: all 0.5s ease;
+    top: 0;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    &:hover{
+        opacity: 1;
+        background-color: black;
+    }
+
+    .language-box img{
+    max-width: 30px;
+}
+}
 
 </style>

@@ -16,16 +16,15 @@ export default {
 
 <template>
     <main class="p-5">
+        <h1>Movies</h1>
         <div id="movie-section" class="row-container py-3 mb-5">
-            <h1>Movies</h1>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4">
+            <div class="row gap-2 justify-content-around">
                 <ProductionCard v-for="movie in store.movies" :production="movie" />    
             </div>
         </div>
-
+        <h1>Tv series</h1>
         <div id="tv-section" class="row-container py-3">
-            <h1>Tv series</h1>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 row-cols-xxl-6  gap-4 ">
+            <div class="row gap-2 justify-content-around ">
                 <ProductionCard v-for="show in store.tvShows" :production="show" />
             </div>
         </div>
@@ -38,6 +37,8 @@ export default {
 main{
     background-color: grey;
 }
+
+
 
 
 </style>
